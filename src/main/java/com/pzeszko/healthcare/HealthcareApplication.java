@@ -15,7 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan("com.pzeszko.healthcare")
 public class HealthcareApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(HealthcareApplication.class, args);
     }
