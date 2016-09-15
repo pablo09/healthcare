@@ -14,6 +14,7 @@
         <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
         <dozer.version>5.5.1</dozer.version>
         <postgresql-driver.version>9.3-1101-jdbc41</postgresql-driver.version>
+        <lombok.version>1.16.10</lombok.version>
     </properties>
 
     <parent>
@@ -70,6 +71,13 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql-driver.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
