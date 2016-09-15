@@ -16,4 +16,7 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/medicines")
+    public String medicines() {return "medicines";}
+
 }
