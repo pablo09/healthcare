@@ -15,6 +15,7 @@
         <dozer.version>5.5.1</dozer.version>
         <postgresql-driver.version>9.3-1101-jdbc41</postgresql-driver.version>
         <lombok.version>1.16.10</lombok.version>
+        <jsr305.version>3.0.0</jsr305.version>
     </properties>
 
     <parent>
@@ -78,6 +79,12 @@
             <version>${lombok.version}</version>
         </dependency>
 
+        <!-- Need for Nullable -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://dozer.sourceforge.net"
           xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>com.pzeszko.healthcare.model.Medicine</class-a>
+        <class-b>com.pzeszko.healthcare.dto.MedicineDto</class-b>
+        <field>
+            <a>price.denomination</a>
+            <b>price</b>
+        </field>
+        <field>
+            <a>price.currencyCode</a>
+            <b>currency</b>
+        </field>
+    </mapping>
 </mappings>
