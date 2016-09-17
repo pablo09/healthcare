@@ -1,5 +1,5 @@
 <#import "common/templatePage.ftl" as template>
-
+<#import "common/pagination.ftl" as p>
 <@template.page>
     <div class="album text-muted">
         <div class="container">
@@ -12,7 +12,7 @@
                     </div>
                 </#list>
             </div>
-
+            <@p.pagination first=medicines.first last=medicines.last current=medicines.number total=medicines.totalPages url='medicine'/>
         </div>
     </div>
 </@template.page>

@@ -100,3 +100,8 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}

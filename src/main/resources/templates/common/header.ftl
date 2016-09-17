@@ -1,11 +1,13 @@
 <#macro scripts>
     <meta charset="UTF-8">
-    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/sticky-footer.css">
     <link rel="stylesheet" type="text/css" href="/css/album.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
+    <script src="/js/main.js"></script>
 </#macro>
 <#macro header>
     <nav class="navbar navbar-fixed-top navbar-dark bg-primary">

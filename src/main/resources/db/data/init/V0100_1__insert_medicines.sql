@@ -9,3 +9,24 @@ VALUES (3, 'Rutinacea', 'COLD', 9.99, 'PLN', 'Good for cold. Contains vit. C and
 
 INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER)
 VALUES (4, 'Magnesium', 'SUPPLEMENT', 5.99, 'PLN', 'Magnesium', 10);
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (5, 'Magvit1', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (6, 'Magvit2', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (7, 'Magvit3', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (8, 'Magvit4', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (9, 'Magvit5', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (10, 'Magvit6', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
+
+INSERT INTO MEDICINE (ID, NAME, CATEGORY, PRICE, PRICE_CURRENCY, DESCRIPTION, NUMBER, IMAGE_DISK_LOCATION)
+VALUES (11, 'Magvit7', 'SUPPLEMENT', 6.12, 'PLN', 'Great medicine for Mg and B6 supplementation', 10, 'img\magvit.jpg');
