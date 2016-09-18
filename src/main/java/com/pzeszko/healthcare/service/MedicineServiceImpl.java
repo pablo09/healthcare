@@ -33,8 +33,9 @@ public class MedicineServiceImpl implements MedicineService {
     }
 
     @Override
-    public Medicine findById(Long id) {
+    public MedicineDto findById(Long id) {
         return medicineRepository.optionalFindOne(id)
+                .map(medicine -> mapper.map(medicine, MedicineDto.class))
                 .orElseThrow(NotFoundException::new);
     }
 

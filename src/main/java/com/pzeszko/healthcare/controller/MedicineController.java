@@ -1,14 +1,12 @@
 package com.pzeszko.healthcare.controller;
 
-import com.pzeszko.healthcare.dto.MedicineDto;
 import com.pzeszko.healthcare.service.MedicineService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,8 +26,9 @@ public class MedicineController {
         return "medicines";
     }
 
-    @RequestMapping(value="/2", method = RequestMethod.GET, params = "page")
-    public ResponseEntity<Page<MedicineDto>> findNotificationsByUser(Pageable pageable) {
-        return ResponseEntity.ok(medicineService.findAll(pageable));
+    @RequestMapping(method = RequestMethod.GET, value = "/details/{id:^[0-9]+$}")
+    public String details(@PathVariable Long id, Model model) {
+        model.addAttribute("item", medicineService.findById(id));
+        return "medicineDetails";
     }
 }

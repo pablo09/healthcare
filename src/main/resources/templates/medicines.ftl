@@ -6,9 +6,10 @@
 
             <div class="row">
                 <#list medicines.content as medicine>
-                    <div class="card">
+                    <div class="card link" onclick="medicine.goToDetails(${medicine.id})">
                         <img alt="100%x280" style="height: 280px; width: 100%; display: block;" src="${medicine.imgLocation}" data-holder-rendered="true">
                         <p class="card-text">${medicine.description}</p>
+                        <p class="card text"><b>${medicine.price} ${medicine.currency}</b></p>
                     </div>
                 </#list>
             </div>

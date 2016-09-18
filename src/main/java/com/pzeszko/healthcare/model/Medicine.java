@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Medicine extends BaseEntity {
 
-    private static final String noImageLocation = "img\\no-img.png";
+    private static final String noImageLocation = "\\img\\no-img.png";
 
     @NotEmpty
     @Column(length = 100)

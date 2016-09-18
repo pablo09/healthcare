@@ -16,3 +16,9 @@ $(document).ready(function() {
        $(this).attr('href', url + '?' + $.param(pagination));
    })
 });
+
+var medicine = {
+    goToDetails: function(id) {
+        window.location.href = 'medicine/details/' + id;
+    }
+}

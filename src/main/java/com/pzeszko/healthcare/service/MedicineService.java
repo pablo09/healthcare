@@ -23,7 +23,7 @@ public interface MedicineService {
      * @param id Medicine identifier
      * @return Instance of Medicine entity
      */
-    Medicine findById(Long id);
+    MedicineDto findById(Long id);
 
     /**
      * Finds all medicines
