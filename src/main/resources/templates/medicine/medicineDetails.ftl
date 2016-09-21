@@ -1,4 +1,4 @@
-<#import "common/templatePage.ftl" as template>
+<#import "../common/templatePage.ftl" as template>
 <#import "spring.ftl" as spring />
 
 <@template.page>

@@ -1,5 +1,5 @@
-<#import "common/templatePage.ftl" as template>
-<#import "common/pagination.ftl" as p>
+<#import "../common/templatePage.ftl" as template>
+<#import "../common/pagination.ftl" as p>
 <@template.page>
     <div class="album text-muted">
         <div class="container">
