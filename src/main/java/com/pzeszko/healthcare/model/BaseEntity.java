@@ -15,7 +15,7 @@ import javax.persistence.*;
 public abstract class BaseEntity implements Persistable<Long> {
 
     @Id
-    @Column(name = "ID", length = 19, precision = 0)
+    @Column(name = "ID", length = 19, precision = 0, unique = true, nullable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

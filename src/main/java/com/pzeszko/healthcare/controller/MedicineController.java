@@ -23,12 +23,12 @@ public class MedicineController {
     @RequestMapping(method = RequestMethod.GET, params = "page")
     public String medicines(Model model, Pageable pageable) {
         model.addAttribute("medicines", medicineService.findAll(pageable));
-        return "medicines";
+        return "medicine/medicines";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/details/{id:^[0-9]+$}")
     public String details(@PathVariable Long id, Model model) {
         model.addAttribute("item", medicineService.findById(id));
-        return "medicineDetails";
+        return "medicine/medicineDetails";
     }
 }

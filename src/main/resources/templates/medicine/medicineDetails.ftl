@@ -1,5 +1,5 @@
 <#import "../common/templatePage.ftl" as template>
-<#import "spring.ftl" as spring />
+<#import "/spring.ftl" as spring />
 
 <@template.page>
 <div class="panel panel-default">
