@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 public class Cart extends BaseEntity {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CART")
     private List<MedicineOrder> medicineOrders = new ArrayList<>();
 

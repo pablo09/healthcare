@@ -17,11 +17,11 @@ public class MedicineOrder extends BaseEntity {
     private Long cartId;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "MEDICINE", nullable = false)
     private Medicine medicine;
 
     @NotNull
-    @Column(name = "NUMBER")
-    private Integer number = 1;
+    @Column(name = "QUANTITY")
+    private Integer quantity = 1;
 }

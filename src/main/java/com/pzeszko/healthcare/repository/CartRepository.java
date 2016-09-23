@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CartRepository extends CrudRepositoryWithOptionalWrapper<Cart, Long> {
+
+
 }

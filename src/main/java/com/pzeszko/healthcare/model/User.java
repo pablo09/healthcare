@@ -27,7 +27,7 @@ public class User extends BaseEntity{
     @Column(name = "role", nullable = false)
     private Role role;
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "cart")
     private Cart cart;
 

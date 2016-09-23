@@ -38,7 +38,7 @@ public class Medicine extends BaseEntity {
     @NotEmpty
     private String description;
 
-    private Integer number = 0;
+    private Integer quantity = 0;
 
     @Column(name = "IMAGE_DISK_LOCATION")
     private String imgLocation = noImageLocation;
@@ -59,6 +59,6 @@ public class Medicine extends BaseEntity {
      * @return True/False: Medicine is available for purchase/ Medicine is not available for purchase
      */
     public boolean isAvailable() {
-        return number > 0;
+        return quantity > 0;
     }
 }

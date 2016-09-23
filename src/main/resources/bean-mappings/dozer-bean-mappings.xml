@@ -6,11 +6,11 @@
         <class-b>com.pzeszko.healthcare.dto.MedicineDto</class-b>
         <field>
             <a>price.denomination</a>
-            <b>price</b>
+            <b>price.denomination</b>
         </field>
         <field>
             <a>price.currencyCode</a>
-            <b>currency</b>
+            <b>price.currency</b>
         </field>
     </mapping>
     <mapping>
@@ -19,6 +19,22 @@
         <field>
             <a>medicine.id</a>
             <b>medicineId</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.pzeszko.healthcare.model.MedicineOrder</class-a>
+        <class-b>com.pzeszko.healthcare.dto.OrderDto</class-b>
+        <field>
+            <a>medicine.name</a>
+            <b>name</b>
+        </field>
+        <field>
+            <a>medicine.price.denomination</a>
+            <b>price.denomination</b>
+        </field>
+        <field>
+            <a>medicine.price.currency</a>
+            <b>price.currency</b>
         </field>
     </mapping>
 </mappings>

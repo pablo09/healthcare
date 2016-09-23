@@ -17,7 +17,7 @@
                     </tr>
                     <tr>
                         <td><@spring.message 'price'/></td>
-                        <td>${item.price}</td>
+                        <td>${item.price.denomination} ${item.price.currency}</td>
                     </tr>
                     <tr>
                         <td><@spring.message 'description'/></td>
@@ -32,7 +32,7 @@
     </div>
     <form action="/api/cart/" method="POST">
         <input type="hidden" name="medicineId" value="${item.id}"/>
-        <input type="number" name="number" minlength="1"/>
+        <input type="number" name="quantity" minlength="1"/>
         <button class="btn btn-primary" type="submit"><@spring.message 'buy'/></button>
     </form>
 </div>

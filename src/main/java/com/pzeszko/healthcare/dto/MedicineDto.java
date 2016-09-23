@@ -2,8 +2,6 @@ package com.pzeszko.healthcare.dto;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 /**
  * Created by Pawel on 2016-09-15.
  */
@@ -14,6 +12,5 @@ public class MedicineDto {
     private String description;
     private String category;
     private String imgLocation;
-    private BigDecimal price;
-    private String currency;
+    private PriceDto price;
 }
