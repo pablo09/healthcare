@@ -1,6 +1,6 @@
 CREATE TABLE MEDICINE (
-  ID                  BIGINT         NOT NULL,
-  VERSION             INTEGER,
+  ID                  BIGSERIAL      NOT NULL,
+  VERSION             INTEGER                 DEFAULT 0,
   NAME                VARCHAR(100)   NOT NULL,
   CATEGORY            VARCHAR(50)    NOT NULL DEFAULT 'GENERAL',
   DESCRIPTION         VARCHAR(255)   NOT NULL,

@@ -13,4 +13,12 @@
             <b>currency</b>
         </field>
     </mapping>
+    <mapping>
+        <class-a>com.pzeszko.healthcare.model.MedicineOrder</class-a>
+        <class-b>com.pzeszko.healthcare.dto.MedicineOrderDto</class-b>
+        <field>
+            <a>medicine.id</a>
+            <b>medicineId</b>
+        </field>
+    </mapping>
 </mappings>

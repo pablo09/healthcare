@@ -13,10 +13,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class MedicineOrder extends BaseEntity {
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "CART", nullable = false)
-    private Cart cart;
+    @Column(name = "CART")
+    private Long cartId;
 
     @NotNull
     @ManyToOne

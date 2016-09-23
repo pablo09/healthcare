@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final static String[] PERMITED_URLS = {"/", "/medicine", "/medicine/*", "/css/*", "/js/*", "/img/*"};
+    private final static String[] PERMITED_URLS = {"/", "/medicine", "/medicine/**", "/css/**", "/js/**", "/img/**"};
 
     @Autowired
     private UserDetailsService userDetailsService;

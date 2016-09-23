@@ -3,6 +3,7 @@ package com.pzeszko.healthcare.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,12 @@ import java.util.List;
 @Data
 public class Cart extends BaseEntity {
 
-    @OneToMany(mappedBy = "cart")
-    private List<MedicineOrder> medicineOrders;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CART")
+    private List<MedicineOrder> medicineOrders = new ArrayList<>();
+
+    public void addToCart(MedicineOrder order) {
+        order.setCartId(this.getId());
+        medicineOrders.add(order);
+    }
 }
