@@ -24,7 +24,7 @@ public abstract class BaseEntity implements Persistable<Long> {
     }
 
     @Version
-    private Integer version;
+    private Integer version = 0;
 
     @Override
     public boolean isNew() {

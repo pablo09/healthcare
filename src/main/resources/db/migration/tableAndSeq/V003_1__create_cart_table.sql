@@ -1,6 +1,6 @@
 CREATE TABLE CART (
-  ID       BIGINT       NOT NULL,
-  VERSION  INTEGER,
+  ID       BIGSERIAL       NOT NULL,
+  VERSION  INTEGER               DEFAULT 0,
 
   PRIMARY KEY (ID)
 )
