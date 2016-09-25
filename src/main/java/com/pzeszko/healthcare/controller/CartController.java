@@ -23,6 +23,7 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity addToCart(@AuthenticationPrincipal CurrentUser loggedUser, MedicineOrderDto dto) {
+
         cartService.addToCart(loggedUser.getUser(), dto);
         return ResponseEntity.ok().build();
     };

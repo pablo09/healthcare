@@ -30,10 +30,8 @@
             </div>
         </div>
     </div>
-    <form action="/api/cart/" method="POST">
-        <input type="hidden" name="medicineId" value="${item.id}"/>
-        <input type="number" name="quantity" minlength="1"/>
-        <button class="btn btn-primary" type="submit"><@spring.message 'buy'/></button>
-    </form>
+    <input type="hidden" id="medicineId" name="medicineId" value="${item.id}"/>
+    <input type="number" id="quantityId" name="quantity" minlength="1"/>
+    <button class="btn btn-primary" onclick="cart.add()"><@spring.message 'buy'/></button>
 </div>
 </@template.page>

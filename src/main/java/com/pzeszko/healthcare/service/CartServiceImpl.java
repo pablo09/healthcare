@@ -1,6 +1,5 @@
 package com.pzeszko.healthcare.service;
 
-import com.fasterxml.jackson.databind.RuntimeJsonMappingException;
 import com.pzeszko.healthcare.dto.MedicineOrderDto;
 import com.pzeszko.healthcare.dto.OrderDto;
 import com.pzeszko.healthcare.exception.NotFoundException;
@@ -42,11 +41,30 @@ public class CartServiceImpl implements CartService {
     public void addToCart(User user, MedicineOrderDto dto) {
         Medicine medicine = medicineRepository.optionalFindOne(dto.getMedicineId()).orElseThrow(NotFoundException::new);
         if (medicine.getQuantity() >= dto.getQuantity()) {
-            Cart cart = createCartIfNecessary(user);
+            addMedicine(user, dto, medicine);
+        } else throw new RuntimeException("No enough items");
+    }
+
+    /**
+     * Adds medicine order to the cart
+     * @param user Logged user
+     * @param dto Information about the order
+     */
+    private void addMedicine(User user, MedicineOrderDto dto, Medicine medicine) {
+        Cart cart = createCartIfNecessary(user);
+        boolean isMedicineAlreadyInCart = cart.getMedicineOrders().stream()
+                .anyMatch(medicineOrder -> medicineOrder.getMedicine().getId().equals(dto.getMedicineId()));
+
+        if (isMedicineAlreadyInCart) {
+            cart.getMedicineOrders().stream()
+                    .filter(medicineOrder -> medicineOrder.getMedicine().getId().equals(dto.getMedicineId()))
+                    .forEach(medicineOrder -> medicineOrder.increaseQuantity(dto.getQuantity()));
+        } else {
             MedicineOrder order = mapper.map(dto, MedicineOrder.class);
             cart.addToCart(order);
+        }
 
-        } else throw new RuntimeJsonMappingException("Not enough items");
+        medicine.decreaseQuantity(dto.getQuantity());
     }
 
     @Override
@@ -54,9 +72,9 @@ public class CartServiceImpl implements CartService {
         User userEntity = userRepository.findOneByEmail(user.getEmail()).orElseThrow(NotFoundException::new);
 
         List<MedicineOrder> orders = Optional.of(userEntity)
-                                         .map(User::getCart)
-                                         .map(Cart::getMedicineOrders)
-                                         .orElseGet(Collections::emptyList);
+                .map(User::getCart)
+                .map(Cart::getMedicineOrders)
+                .orElseGet(Collections::emptyList);
         return orders.stream()
                 .map(order -> mapper.map(order, OrderDto.class))
                 .collect(Collectors.toList());
@@ -70,7 +88,8 @@ public class CartServiceImpl implements CartService {
      * @return User's cart
      */
     private Cart createCartIfNecessary(User user) {
-        Cart cart = user.getCart();
+        User userEntity = userRepository.findOneByEmail(user.getEmail()).orElseThrow(NotFoundException::new);
+        Cart cart = userEntity.getCart();
 
         if (cart == null) {
             cart = new Cart();

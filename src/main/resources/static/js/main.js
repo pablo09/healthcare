@@ -21,4 +21,21 @@ var medicine = {
     goToDetails: function(id) {
         window.location.href = 'medicine/details/' + id;
     }
-}
+};
+
+var cart = {
+  add: function() {
+      var order = {
+          medicineId: $("#medicineId").val(),
+          quantity: $("#quantityId").val()
+      };
+    console.log(order);
+      $.post('/api/cart', order)
+          .done(function() {
+              $.toast('Medicine added has been added to cart successfully');
+          })
+          .fail(function() {
+              $.toast('Error occured while trying to add medicine to the cart');
+          });
+  }
+};

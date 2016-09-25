@@ -11,16 +11,18 @@
                         <th><@spring.message 'name'/></th>
                         <th><@spring.message 'quantity'/></th>
                         <th><@spring.message 'price'/></th>
+                        <th><@spring.message 'totalPrice'/></th>
                     </tr>
                     <#list items as item>
                         <tr>
                             <td>${item.name}</td>
                             <td>${item.quantity}</td>
                             <td>${item.price.denomination} ${item.price.currency}</td>
+                            <td>${item.totalPrice} ${item.price.currency}</td>
                         </tr>
                     <#else>
                         <tr>
-                            <td colspan="3"></td> No items</td>
+                            <td colspan="4">No items</td>
                         </tr>
                     </#list>
 

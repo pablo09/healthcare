@@ -61,4 +61,12 @@ public class Medicine extends BaseEntity {
     public boolean isAvailable() {
         return quantity > 0;
     }
+
+    public void decreaseQuantity(int boughtItems) {
+        if(quantity < boughtItems) {
+            throw new IllegalStateException("Trying to buy more items than actually available at the store");
+        }
+
+        quantity -= boughtItems;
+    }
 }

@@ -1,6 +1,7 @@
 <#macro scripts>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.toast.css">
     <link rel="stylesheet" type="text/css" href="/css/sign.css">
     <link rel="stylesheet" type="text/css" href="/css/sticky-footer.css">
     <link rel="stylesheet" type="text/css" href="/css/album.css">
@@ -9,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/jquery.toast.js"></script>
 </#macro>
 <#macro header>
     <nav class="navbar navbar-fixed-top navbar-dark bg-primary">

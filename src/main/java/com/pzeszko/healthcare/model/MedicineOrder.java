@@ -24,4 +24,13 @@ public class MedicineOrder extends BaseEntity {
     @NotNull
     @Column(name = "QUANTITY")
     private Integer quantity = 1;
+
+    /**
+     * Increases number of medicines in order
+     * @param newItems Number of new items to add
+     */
+    public void increaseQuantity(int newItems) {
+        quantity += newItems;
+    }
+
 }

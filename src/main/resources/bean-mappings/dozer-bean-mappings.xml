@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://dozer.sourceforge.net"
           xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <configuration>
+        <custom-converters> <!-- these are always bi-directional -->
+            <converter type="com.pzeszko.healthcare.mapper.MedicineOrderConverter">
+                <class-a>com.pzeszko.healthcare.model.MedicineOrder</class-a>
+                <class-b>com.pzeszko.healthcare.dto.OrderDto</class-b>
+            </converter>
+        </custom-converters>
+    </configuration>
     <mapping>
         <class-a>com.pzeszko.healthcare.model.Medicine</class-a>
         <class-b>com.pzeszko.healthcare.dto.MedicineDto</class-b>
@@ -19,22 +27,6 @@
         <field>
             <a>medicine.id</a>
             <b>medicineId</b>
-        </field>
-    </mapping>
-    <mapping>
-        <class-a>com.pzeszko.healthcare.model.MedicineOrder</class-a>
-        <class-b>com.pzeszko.healthcare.dto.OrderDto</class-b>
-        <field>
-            <a>medicine.name</a>
-            <b>name</b>
-        </field>
-        <field>
-            <a>medicine.price.denomination</a>
-            <b>price.denomination</b>
-        </field>
-        <field>
-            <a>medicine.price.currency</a>
-            <b>price.currency</b>
         </field>
     </mapping>
 </mappings>
