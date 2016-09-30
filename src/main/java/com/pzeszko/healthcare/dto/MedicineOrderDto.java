@@ -14,6 +14,6 @@ public class MedicineOrderDto {
     Long medicineId;
 
     @NotNull
-    @Min(0)
+    @Min(1)
     Integer quantity;
 }

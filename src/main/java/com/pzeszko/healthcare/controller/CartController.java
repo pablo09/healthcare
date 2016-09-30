@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * Created by Pawel on 2016-09-22.
  */
@@ -22,8 +24,7 @@ public class CartController {
     private CartService cartService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addToCart(@AuthenticationPrincipal CurrentUser loggedUser, MedicineOrderDto dto) {
-
+    public ResponseEntity addToCart(@AuthenticationPrincipal CurrentUser loggedUser, @Valid MedicineOrderDto dto) {
         cartService.addToCart(loggedUser.getUser(), dto);
         return ResponseEntity.ok().build();
     };
