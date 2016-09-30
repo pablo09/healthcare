@@ -1,6 +1,7 @@
 <#import "header.ftl" as h/>
 <#import "footer.ftl" as f/>
 <#import "sidebar.ftl" as s/>
+<#import "messages.ftl" as m/>
 <#macro page>
 <!DOCTYPE html>
 
@@ -8,6 +9,7 @@
 <head>
     <title></title>
     <@h.scripts/>
+    <@m.messages/>
 </head>
 <body>
     <@h.header></@h.header>

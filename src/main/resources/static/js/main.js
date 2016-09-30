@@ -29,13 +29,13 @@ var cart = {
           medicineId: $("#medicineId").val(),
           quantity: $("#quantityId").val()
       };
-    console.log(order);
+      
       $.post('/api/cart', order)
           .done(function() {
-              $.toast('Medicine added has been added to cart successfully');
+              $.toast(msg.cart.add.success);
           })
-          .fail(function() {
-              $.toast('Error occured while trying to add medicine to the cart');
+          .fail(function(response) {
+              $.toast(response.message);
           });
   }
 };
