@@ -13,7 +13,7 @@
                     </div>
                 </#list>
             </div>
-            <@p.pagination first=medicines.first last=medicines.last current=medicines.number total=medicines.totalPages url='medicine'/>
+            <@p.pagination data=medicines url='medicine'/>
         </div>
     </div>
 </@template.page>

@@ -9,27 +9,33 @@ Message code is prepented by the phrace 'msg.' f.e. instead of cart.buy it is ms
     var msg = {};
     msg.cart = {};
 
+msg.table = {};
+
 msg.account = {};
 
 msg.cart.add = {};
 
 msg.account.login = {};
-msg.name = "<@spring.message 'name'/>";
-msg.account.sign = "<@spring.message 'account.sign'/>";
-msg.category = "<@spring.message 'category'/>";
-msg.cart.add.success = "<@spring.message 'cart.add.success'/>";
-msg.quantity = "<@spring.message 'quantity'/>";
-msg.availability = "<@spring.message 'availability'/>";
-msg.buy = "<@spring.message 'buy'/>";
-msg.price = "<@spring.message 'price'/>";
-msg.account.remember = "<@spring.message 'account.remember'/>";
-msg.cart.add.error = "<@spring.message 'cart.add.error'/>";
 msg.account.password = "<@spring.message 'account.password'/>";
-msg.account.email = "<@spring.message 'account.email'/>";
-msg.description = "<@spring.message 'description'/>";
+msg.account.sign = "<@spring.message 'account.sign'/>";
+msg.cart.add.error = "<@spring.message 'cart.add.error'/>";
+msg.invoice = "<@spring.message 'invoice'/>";
 msg.totalPrice = "<@spring.message 'totalPrice'/>";
+msg.state = "<@spring.message 'state'/>";
+msg.quantity = "<@spring.message 'quantity'/>";
+msg.buy = "<@spring.message 'buy'/>";
+msg.cart.add.success = "<@spring.message 'cart.add.success'/>";
+msg.availability = "<@spring.message 'availability'/>";
+msg.account.remember = "<@spring.message 'account.remember'/>";
 msg.account.login.error = "<@spring.message 'account.login.error'/>";
 msg.account.label = "<@spring.message 'account.label'/>";
+msg.category = "<@spring.message 'category'/>";
+msg.price = "<@spring.message 'price'/>";
+msg.description = "<@spring.message 'description'/>";
+msg.table.sum = "<@spring.message 'table.sum'/>";
+msg.sellDate = "<@spring.message 'sellDate'/>";
+msg.account.email = "<@spring.message 'account.email'/>";
+msg.name = "<@spring.message 'name'/>";
 
 </script>
 </#macro>

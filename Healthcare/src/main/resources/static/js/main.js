@@ -1,20 +1,48 @@
 $(document).ready(function() {
-   $(".pagelink").click(function() {
-       var url = $(this).attr('href');
-       var pageNumber = $(this).attr('page');
 
-       if(_.isNil(pageNumber)) {
-           pageNumber = 1;
-       }
+    pageLink('pagelink', 'name');
+    pageLink('pagelinkBySellDate', 'sellDate');
 
-       var pagination = {
-           page: pageNumber - 1,
-           size: 9,
-           sort: 'name,asc'
-       }
+    pageFormButton('pagelink', 'name');
+    pageFormButton('pagelinkBySellDate', 'sellDate');
 
-       $(this).attr('href', url + '?' + $.param(pagination));
-   })
+    function pageLink(className, sortAttr) {
+        $("a." + className).click(function() {
+            var url = $(this).attr('href');
+            var pageNumber = $(this).attr('page');
+
+            if(_.isNil(pageNumber)) {
+                pageNumber = 1;
+            }
+
+            var pagination = {
+                page: pageNumber - 1,
+                size: 9,
+                sort: sortAttr + ',asc'
+            }
+
+            $(this).attr('href', url + '?' + $.param(pagination));
+        });
+    };
+
+    function pageFormButton(className, sortAttr) {
+        $("button." + className).click(function() {
+            var action = $(this).closest('form').attr('action');
+            var pageNumber = $(this).attr('page');
+
+            if(_.isNil(pageNumber)) {
+                pageNumber = 1;
+            }
+
+            var pagination = {
+                page: pageNumber - 1,
+                size: 9,
+                sort: sortAttr + ',asc'
+            }
+
+            $(this).closest('form').attr('action', action + '?' + $.param(pagination));
+        });
+    };
 });
 
 var medicine = {
@@ -30,7 +58,7 @@ var cart = {
           quantity: $("#quantityId").val()
       };
       
-      $.post('/api/cart', order)
+      $.post('/cart', order)
           .done(function() {
               $.toast(msg.cart.add.success);
           })
