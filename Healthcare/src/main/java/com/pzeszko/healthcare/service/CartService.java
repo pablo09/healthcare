@@ -1,10 +1,11 @@
 package com.pzeszko.healthcare.service;
 
 import com.pzeszko.healthcare.dto.MedicineOrderDto;
-import com.pzeszko.healthcare.dto.OrderDto;
+import com.pzeszko.healthcare.dto.TotalOrderDto;
+import com.pzeszko.healthcare.model.FinalizedOrder;
 import com.pzeszko.healthcare.model.User;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Created by Pawel on 2016-09-22.
@@ -12,5 +13,9 @@ import java.util.List;
 public interface CartService {
     void addToCart(User user, MedicineOrderDto dto);
 
-    List<OrderDto> getOrders(User user);
+    TotalOrderDto getOrders(User user);
+
+    void finalizeOrder(User user);
+
+    Page<FinalizedOrder> getOrderHistory(User user, Pageable pageable);
 }

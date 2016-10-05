@@ -29,4 +29,32 @@
             <b>medicineId</b>
         </field>
     </mapping>
+    <mapping>
+        <class-a>com.pzeszko.healthcare.model.BoughtMedicineOrder</class-a>
+        <class-b>com.pzeszko.healthcare.model.MedicineOrder</class-b>
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+        <field>
+            <a>name</a>
+            <b>medicine.name</b>
+        </field>
+        <field>
+            <a>description</a>
+            <b>medicine.description</b>
+        </field>
+        <field>
+            <a>category</a>
+            <b>medicine.category</b>
+        </field>
+        <field>
+            <a>price</a>
+            <b>medicine.price</b>
+        </field>
+        <field>
+            <a>price</a>
+            <b>medicine.price</b>
+        </field>
+    </mapping>
 </mappings>

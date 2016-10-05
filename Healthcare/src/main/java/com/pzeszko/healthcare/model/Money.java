@@ -20,6 +20,7 @@ package com.pzeszko.healthcare.model;
  */
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -39,8 +40,11 @@ public class Money implements Serializable {
     public static final Money ZERO = new Money(BigDecimal.ZERO);
 
     @Getter
+    @Setter
     private BigDecimal denomination;
 
+    @Getter
+    @Setter
     private String currencyCode;
 
     @Deprecated

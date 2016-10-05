@@ -43,17 +43,6 @@ public class Medicine extends BaseEntity {
     @Column(name = "IMAGE_DISK_LOCATION")
     private String imgLocation = noImageLocation;
 
-    @AllArgsConstructor
-    @Getter
-    public enum Category {
-        GENERAL("GENERAL"),
-        PAINKILLERS("PAINKILLERS"),
-        SUPPLEMENT("SUPPLEMENT"),
-        COLD("COLD");
-
-        private final String name;
-    }
-
     /**
      * Is medicine available for purchase
      * @return True/False: Medicine is available for purchase/ Medicine is not available for purchase

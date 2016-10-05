@@ -2,21 +2,20 @@ package com.pzeszko.healthcare.service;
 
 import com.pzeszko.healthcare.dto.MedicineOrderDto;
 import com.pzeszko.healthcare.dto.OrderDto;
+import com.pzeszko.healthcare.dto.TotalOrderDto;
 import com.pzeszko.healthcare.exception.NotFoundException;
-import com.pzeszko.healthcare.model.Cart;
-import com.pzeszko.healthcare.model.Medicine;
-import com.pzeszko.healthcare.model.MedicineOrder;
-import com.pzeszko.healthcare.model.User;
-import com.pzeszko.healthcare.repository.CartRepository;
-import com.pzeszko.healthcare.repository.MedicineOrderRepository;
-import com.pzeszko.healthcare.repository.MedicineRepository;
-import com.pzeszko.healthcare.repository.UserRepository;
+import com.pzeszko.healthcare.model.*;
+import com.pzeszko.healthcare.repository.*;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -28,12 +27,14 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 @AllArgsConstructor(onConstructor = @__(@Autowired))
+@Slf4j
 public class CartServiceImpl implements CartService {
 
     private final MedicineRepository medicineRepository;
     private final MedicineOrderRepository medicineOrderRepository;
     private final CartRepository cartRepository;
     private final UserRepository userRepository;
+    private final FinalizedOrderRepository finalizedOrderRepository;
     private final Mapper mapper;
 
     @Transactional
@@ -68,17 +69,51 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<OrderDto> getOrders(User user) {
+    public TotalOrderDto getOrders(User user) {
         User userEntity = userRepository.findOneByEmail(user.getEmail()).orElseThrow(NotFoundException::new);
 
         List<MedicineOrder> orders = Optional.of(userEntity)
                 .map(User::getCart)
                 .map(Cart::getMedicineOrders)
                 .orElseGet(Collections::emptyList);
-        return orders.stream()
+        List<OrderDto> ordersDto = orders.stream()
                 .map(order -> mapper.map(order, OrderDto.class))
                 .collect(Collectors.toList());
 
+        return createTotalOrder(ordersDto);
+    }
+
+    @Transactional
+    @Override
+    public void finalizeOrder(User user) {
+        FinalizedOrder order = new FinalizedOrder();
+        Cart cart = cartRepository.optionalFindOne(user.getCart().getId()).orElseThrow(NotFoundException::new);
+
+        List<BoughtMedicineOrder> boughtMedicineOrders = cart.getMedicineOrders().stream()
+                .map(medicineOrder -> mapper.map(medicineOrder, BoughtMedicineOrder.class))
+                .collect(Collectors.toList());
+        order.setUser(user);
+        order.setMedicines(boughtMedicineOrders);
+
+        finalizedOrderRepository.save(order);
+        cart.clearCart();
+    }
+
+    @Override
+    public Page<FinalizedOrder> getOrderHistory(User user, Pageable pageable) {
+        return finalizedOrderRepository.findByUser(user, pageable);
+    }
+
+
+    @Transactional
+    private void clearCart (User user) {
+        Cart cart = cartRepository.optionalFindOne(user.getCart().getId()).orElseThrow(NotFoundException::new);
+        cart.clearCart();
+        if(cart != null && cart.getMedicineOrders() != null) {
+            medicineOrderRepository.delete(cart.getMedicineOrders());
+        } else {
+            log.info("User {} has no cart or no orders", user.getEmail());
+        }
     }
 
     /**
@@ -99,5 +134,18 @@ public class CartServiceImpl implements CartService {
         }
 
         return cart;
+    }
+
+    private TotalOrderDto createTotalOrder(List<OrderDto> orders) {
+        TotalOrderDto total = new TotalOrderDto();
+        total.setOrders(orders);
+
+        BigDecimal totalDenomination = orders.stream()
+                .map(order -> order.getTotalPrice().getDenomination())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        total.setOrdersTotalPrice(new Money(totalDenomination));
+
+        return total;
     }
 }

@@ -36,7 +36,12 @@ public class MedicineOrderConverter extends DozerConverter<MedicineOrder, OrderD
         price.setCurrency(entity.getMedicine().getPrice().getCurrencyCode());
 
         order.setPrice(price);
-        order.setTotalPrice(price.getDenomination().multiply(new BigDecimal(entity.getQuantity())));
+
+        PriceDto total = new PriceDto();
+        total.setDenomination(price.getDenomination().multiply(new BigDecimal(entity.getQuantity())));
+        total.setCurrency(entity.getMedicine().getPrice().getCurrencyCode());
+
+        order.setTotalPrice(total);
         order.setQuantity(entity.getQuantity());
         return order;
     }

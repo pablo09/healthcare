@@ -41,7 +41,7 @@ public class AccountController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/cart")
     public String cart(Model model, @AuthenticationPrincipal CurrentUser loggedUser) {
-        model.addAttribute("items", cartService.getOrders(loggedUser.getUser()));
+        model.addAttribute("totalOrder", cartService.getOrders(loggedUser.getUser()));
         return "account/cart";
     }
 }
