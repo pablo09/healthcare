@@ -103,9 +103,9 @@
                 <artifactId>spring-message-to-js-maven-plugin</artifactId>
                 <version>1.0</version>
                 <configuration>
-                    <springMessageLocation>C:\Users\Pawel\IdeaProjects\Healthcare\src\main\resources\messages\messages.properties</springMessageLocation>
-                    <jsScriptTemplateLocation>C:\Users\Pawel\IdeaProjects\Healthcare\src\main\resources\templates\common\messages_template.ftl</jsScriptTemplateLocation>
-                    <jsScriptLocation>C:\Users\Pawel\IdeaProjects\Healthcare\src\main\resources\templates\common\messages.ftl</jsScriptLocation>
+                    <springMessageLocation>C:\Users\Pawel\IdeaProjects\Healthcare\Healthcare\src\main\resources\messages\messages.properties</springMessageLocation>
+                    <jsScriptTemplateLocation>C:\Users\Pawel\IdeaProjects\Healthcare\Healthcare\src\main\resources\templates\common\messages_template.ftl</jsScriptTemplateLocation>
+                    <jsScriptLocation>C:\Users\Pawel\IdeaProjects\Healthcare\Healthcare\src\main\resources\templates\common\messages.ftl</jsScriptLocation>
                 </configuration>
                 <executions>
                     <execution>
