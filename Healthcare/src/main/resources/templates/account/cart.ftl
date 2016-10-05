@@ -13,20 +13,28 @@
                         <th><@spring.message 'price'/></th>
                         <th><@spring.message 'totalPrice'/></th>
                     </tr>
-                    <#list items as item>
+                    <#list totalOrder.orders as item>
                         <tr>
                             <td>${item.name}</td>
                             <td>${item.quantity}</td>
                             <td>${item.price.denomination} ${item.price.currency}</td>
-                            <td>${item.totalPrice} ${item.price.currency}</td>
+                            <td>${item.totalPrice.denomination} ${item.totalPrice.currency}</td>
                         </tr>
                     <#else>
                         <tr>
                             <td colspan="4">No items</td>
                         </tr>
                     </#list>
-
+                    <#if totalOrder.orders?has_content>
+                        <tr>
+                            <td colspan="2"><b><@spring.message 'table.sum'/></b></td>
+                            <td colspan="2"><b>${totalOrder.ordersTotalPrice.denomination} ${totalOrder.ordersTotalPrice.currencyCode}</b></td>
+                        </tr>
+                    </#if>
                 </table>
+                <form action="/cart/finalize" method="POST">
+                    <button type="submit" class="pagelinkBySellDate">SUBMIT</button>
+                </form>
             </div>
 
         </div>
