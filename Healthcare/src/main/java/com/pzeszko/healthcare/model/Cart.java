@@ -12,14 +12,19 @@ import java.util.List;
 @Entity
 @Table(name = "CART")
 @Data
-public class Cart extends BaseEntity {
+public class  Cart extends BaseEntity {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "CART")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "CART", nullable = false)
     private List<MedicineOrder> medicineOrders = new ArrayList<>();
 
     public void addToCart(MedicineOrder order) {
         order.setCartId(this.getId());
         medicineOrders.add(order);
+    }
+
+    public void clearCart() {
+        medicineOrders.stream().forEach(MedicineOrder::removeFromCart);
+        medicineOrders.clear();
     }
 }
